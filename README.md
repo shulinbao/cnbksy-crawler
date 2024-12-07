@@ -67,15 +67,6 @@ geckodriver_path = r"D:\ai\geckodriver-v0.35.0-win32\geckodriver.exe"  # 替换�
 firefox_binary_path = r"C:\Program Files\Mozilla Firefox\firefox.exe"  # 替换为实际路径
 ```
 
-## 脚本工作流程
-
-1. 用户输入工作目录路径。
-2. 脚本检查并加载已有的 cookies（如果有）。
-3. 用户登录网站后，脚本获取文献图片的下载链接。
-4. 图片被自动下载并保存到指定目录。
-5. 图片转换为 PDF 格式并保存。
-6. 如果选择继续，脚本重复下载过程；如果选择退出，脚本结束。
-
 ## 注意事项
 
 1. **浏览器设置**：确保你已经正确设置了 Firefox 浏览器的路径，并且已经下载并配置了 GeckoDriver。
@@ -90,6 +81,4 @@ pip install blinker==1.7.0
 
 本项目遵循 MIT 许可证，详情请参阅 [LICENSE](./LICENSE) 文件。
 
----
 
-如果你有任何问题或需要进一步的帮助，请随时联系我！
