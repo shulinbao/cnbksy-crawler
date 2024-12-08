@@ -1,5 +1,6 @@
 # cnbksy-crawler
 这是一个用于自动化下载“全国报刊索引”文献图片并将其转换为 PDF 文件的 Python 脚本。该脚本使用了 Selenium 浏览器自动化工具，从指定的网页下载图片并最终将这些图片合成一个 PDF 文件。用户可以灵活设置下载目录和输出的 PDF 文件名。
+因为我的服务提供商使用了 openathens 作为登录认证方式，所以这里默认使用了 openathens 作为登录认证及认证后的跳转链接（我认为这是值得的，因为 openathens 链接处理起来相对麻烦些）。如果你是用的是其它 VPN 服务或者使用官网的 IP 登录，请相应修改 `url`（登录页面的地址）和 `new_url`（登录成功后跳转的地址，一般来说是 `https://www.cnbksy.com/v2/literature/navigation`）。
 
 ## 依赖的 Python 库
 
@@ -26,6 +27,18 @@ pip install requests pillow fpdf selenium selenium-wire
 1. **GeckoDriver**：该脚本使用 Selenium 启动 Firefox 浏览器，因此需要安装 GeckoDriver。请根据你操作系统的版本下载合适的 [GeckoDriver](https://github.com/mozilla/geckodriver/releases)，并设置正确的路径。
 2. **Firefox 浏览器**：脚本需要安装 Firefox 浏览器，并且需要设置 Firefox 的路径。
 
+## 重要配置
+
+- **GeckoDriver 路径**：你需要替换 `geckodriver_path` 为你本地安装的 GeckoDriver 的路径。
+- **Firefox 浏览器路径**：你需要替换 `firefox_binary_path` 为你本地安装的 Firefox 浏览器的路径。
+
+### 示例：
+
+```python
+geckodriver_path = r"D:\ai\geckodriver-v0.35.0-win32\geckodriver.exe"  # 替换为实际路径
+firefox_binary_path = r"C:\Program Files\Mozilla Firefox\firefox.exe"  # 替换为实际路径
+```
+
 ## 脚本功能
 
 1. **自动化登录**：脚本能够加载并保存登录所需的 cookies，避免每次都需要手动登录。
@@ -35,9 +48,13 @@ pip install requests pillow fpdf selenium selenium-wire
 
 ## 使用方法
 
+### 0. 检查依赖及配置
+
+检查依赖的 Python 库及 **GeckoDriver** 是否正确安装，`geckodriver_path`、`firefox_binary_path`、`url`、`new_url`（如果你使用的是官方 IP 登录或者其它 VPN 而不是 openathens）是否正确配置。
+
 ### 1. 设置工作目录
 
-运行脚本时，用户需要指定图片下载的工作目录。用户可以输入目录路径或文件夹名。如果没有输入，脚本将默认创建一个 `test` 文件夹并作为下载目录。
+开始运行脚本时，用户需要指定图片下载的工作目录。用户可以输入目录路径或文件夹名。如果没有输入，脚本将默认创建一个 `test` 文件夹并作为下载目录。
 
 ### 2. 登录并保存 Cookies
 
@@ -45,7 +62,7 @@ pip install requests pillow fpdf selenium selenium-wire
 
 ### 3. 开始下载文献图片
 
-在浏览器加载目标页面后，用户按下回车开始下载图片。脚本会自动提取图片的下载链接并进行下载，下载过程会显示进度。
+在您手动打开要下载的文献的“整本浏览”页面，在页面加载完成后后，用户按下回车开始下载图片。脚本会自动提取图片的下载链接并进行下载，下载过程会显示进度。
 
 ### 4. 保存为 PDF
 
@@ -53,19 +70,7 @@ pip install requests pillow fpdf selenium selenium-wire
 
 ### 5. 继续或退出
 
-在完成下载和保存 PDF 后，脚本会询问用户是否继续下载。如果输入 `exit`，脚本将退出。
-
-## 重要配置
-
-- **GeckoDriver 路径**：你需要替换 `geckodriver_path` 为你本地安装的 GeckoDriver 的路径。
-- **Firefox 浏览器路径**：你需要替换 `firefox_binary_path` 为你本地安装的 Firefox 浏览器的路径。
-  
-### 示例：
-
-```python
-geckodriver_path = r"D:\ai\geckodriver-v0.35.0-win32\geckodriver.exe"  # 替换为实际路径
-firefox_binary_path = r"C:\Program Files\Mozilla Firefox\firefox.exe"  # 替换为实际路径
-```
+在完成下载和保存 PDF 后，脚本会询问用户是否继续下载（回到第三步）。如果输入 `exit`，脚本将退出。
 
 ## 注意事项
 
