@@ -28,6 +28,8 @@ pip install requests pillow fpdf selenium selenium-wire
 1. **GeckoDriver**：该脚本使用 Selenium 启动 Firefox 浏览器，因此需要安装 GeckoDriver。请根据你操作系统的版本下载合适的 [GeckoDriver](https://github.com/mozilla/geckodriver/releases)，并设置正确的路径。
 2. **Firefox 浏览器**：脚本需要安装 Firefox 浏览器，并且需要设置 Firefox 的路径。
 
+*没有用 Chrome 是因为 Chrome 114 版本之后的驱动安装起来十分麻烦，如果您确实需要使用 Chrome 浏览器，请记得相应修改代码*
+
 ## 重要配置
 
 - **GeckoDriver 路径**：你需要替换 `geckodriver_path` 为你本地安装的 GeckoDriver 的路径。
