@@ -1,5 +1,6 @@
 # cnbksy-crawler
 这是一个用于自动化下载“全国报刊索引”文献图片并将其转换为 PDF 文件的 Python 脚本。该脚本使用了 Selenium 浏览器自动化工具，从指定的网页下载图片并最终将这些图片合成一个 PDF 文件。用户可以灵活设置下载目录和输出的 PDF 文件名。
+
 因为我的服务提供商使用了 openathens 作为登录认证方式，所以这里默认使用了 openathens 作为登录认证及认证后的跳转链接（我认为这是值得的，因为 openathens 链接处理起来相对麻烦些）。如果你是用的是其它 VPN 服务或者使用官网的 IP 登录，请相应修改 `url`（登录页面的地址）和 `new_url`（登录成功后跳转的地址，一般来说是 `https://www.cnbksy.com/v2/literature/navigation`）。
 
 ## 依赖的 Python 库
